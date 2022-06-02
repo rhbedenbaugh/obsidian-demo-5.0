@@ -1,5 +1,7 @@
-import { React } from "../../deps.ts";
-import {useObsidian} from '../../deps.ts';
+/**
+ * @description This is never called.\nI'm not sure why it's here.
+ */
+import { React , useObsidian } from '../../deps.ts';
 
 const AddContainer = (props: any) => {
   const { query, mutate, cache, setCache, clearCache } = useObsidian();

@@ -1,5 +1,8 @@
-import { React } from '../../../deps.ts';
-
+/**
+ * @description I'm not sure this applies or if it's even used.\nIt seems to be for a seperate demo.
+ */
+ import { React } from '../../../deps.ts';
+//creates & returns Country
 const Country = (props: any) =>{
 
   return (<div>

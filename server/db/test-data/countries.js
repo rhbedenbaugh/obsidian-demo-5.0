@@ -1,3 +1,6 @@
+/**
+ * @description This is demo data.
+ */
 export const countriesData = `
 INSERT INTO obsidian_demo_schema.countries (name, climate)
 VALUES

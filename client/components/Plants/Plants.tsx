@@ -1,3 +1,6 @@
+/**
+ * @description This renders the Plants.
+ */
 import { React } from '../../../deps.ts';
 import Plant from './Plant.tsx';
 

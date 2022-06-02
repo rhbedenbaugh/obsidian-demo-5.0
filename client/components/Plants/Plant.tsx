@@ -1,4 +1,7 @@
-import { React } from '../../../deps.ts';
+/**
+ * @description This contains the Plant information and allows deleting a plant.
+ */
+ import { React } from '../../../deps.ts';
 
 const Plant = (props: any) => {
   const {id, name, maintenance, size, imageurl} = props.plant;

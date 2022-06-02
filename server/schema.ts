@@ -1,3 +1,6 @@
+/**
+ * @description This...
+ */
 import { applyGraphQL, gql, GQLError } from "https://deno.land/x/oak_graphql/mod.ts";
 
 const types = gql`
@@ -6,7 +9,6 @@ const types = gql`
     MEDIUM
     HIGH
   }
-	
   enum PlantSize {
     SMALL
     MEDIUM

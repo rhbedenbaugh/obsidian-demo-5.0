@@ -1,6 +1,10 @@
-import {React, ReactDOMServer, ReactDOM } from '../deps.ts';
-import {App} from '../client/app.tsx';
-import {types} from './schema.ts';
+/**
+ * @description This...
+ */
+import { React, ReactDOMServer, ReactDOM } from '../deps.ts';
+import { Dero } from "https://deno.land/x/dero@1.2.4/mod.ts";
+import { App } from '../client/app.tsx';
+import { types } from './schema.ts';
 import { resolvers } from './resolvers.ts';
 import { routes } from './routes.ts';
 
@@ -11,36 +15,37 @@ const router = new Router();
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const { files } = await Deno.emit(
-  "../client/client.tsx",
-  {
-      check: false,
-      bundle: "module",
-      compilerOptions: {
-          lib: ["dom", "dom.iterable", "esnext"],
-      }
+const { files } = await Deno.emit('../client/client.tsx', {
+  check: false,
+  bundle: 'module',
+  compilerOptions: {
+    lib: ['dom', 'dom.iterable', 'esnext'],
   },
-);
+});
 
 const BROWSER_PATH = '/dev-client.js';
 
 class Server extends Dero {
-    constructor(){
-        super();
-        // build middleware and mutate body for react
-        this.use((req, res, next) => {
-            res.return.push((body) => {
-                if (React.isValidElement(body)) {
-                    res.type("text/html");
-                    const content = (ReactDOMServer as any).renderToString(body);
-                    const seo = res.locals.seo;
-                    return `
+  constructor() {
+    super();
+    // build middleware and mutate body for react
+    this.use((req, res, next) => {
+      res.return.push((body) => {
+        if (React.isValidElement(body)) {
+          res.type('text/html');
+          const content = (ReactDOMServer as any).renderToString(body);
+          const seo = res.locals.seo;
+          return `
                         <!doctype html>
                         <html>
                         <head>
                             <title>${seo.title}</title>
-                            <meta name="description" content="${seo.description}">
-                            <script>window.__INITIAL_DATA__ = ${JSON.stringify(seo)};</script>
+                            <meta name="description" content="${
+                              seo.description
+                            }">
+                            <script>window.__INITIAL_DATA__ = ${JSON.stringify(
+                              seo
+                            )};</script>
                         </head>
                         <body>
                             <div id="root">${content}</div>
@@ -48,31 +53,37 @@ class Server extends Dero {
                         </body>
                         </html>
                     `;
-                }
-                return;
-            });
-            next();
-        });
-        // get the client js
-        this.get(BROWSER_PATH, (req, res) => {
-            res.type('application/javascript').body(files["deno:///bundle.js"]);
-        });
-        // exact for all route
-        this.get("/*", (req, res) => {
-            const route = routes.find(r => matchPath(req.url, r));
-            if (route) {
-                res.locals.seo = route.seo;
-                return (
-                    <StaticRouter location={req.url}>
-                        <App isServer={true} Component={route.component} initData={{ seo: route.seo }} />
-                    </StaticRouter>
-                );
-            }
-            res.status(404).body("Not Found");
-        });
-    }
+        }
+        return;
+      });
+      next();
+    });
+    // get the client js
+    this.get(BROWSER_PATH, (req, res) => {
+      res.type('application/javascript').body(files['deno:///bundle.js']);
+    });
+    // exact for all route
+    this.get('/*', (req, res) => {
+      const route = routes.find((r) => matchPath(req.url, r));
+      if (route) {
+        res.locals.seo = route.seo;
+        return (
+          <StaticRouter location={req.url}>
+            <App
+              isServer={true}
+              Component={route.component}
+              initData={{ seo: route.seo }}
+            />
+          </StaticRouter>
+        );
+      }
+      res.status(404).body('Not Found');
+    });
+  }
 }
-await new Server().listen(3000, () => console.log('> Running on http://localhost:3000/'));
+await new Server().listen(3000, () =>
+  console.log('> Running on http://localhost:3000/')
+);
 
 // router.get("/", (context:any) => {
 //   context.response.body =
@@ -98,7 +109,6 @@ await new Server().listen(3000, () => console.log('> Running on http://localhost
 // });
 
 // app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
-
 
 // app.listen({ port: 8000 });
 // console.log(`server is running on port: 8000`);

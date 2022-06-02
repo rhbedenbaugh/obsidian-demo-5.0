@@ -1,7 +1,10 @@
+/**
+ * @description This contains the app file for the client.
+ */
 import { React, ReactDOMServer, ObsidianWrapper } from '../deps.ts';
 import Main from './components/Main.tsx';
-import Plants from './components/Plants/Plants.tsx';
-import AddPlant from './components/AddPlant.tsx';
+// import Plants from './components/Plants/Plants.tsx';
+// import AddPlant from './components/AddPlant.tsx';
 declare global {
 	namespace JSX {
 		interface IntrinsicElements {

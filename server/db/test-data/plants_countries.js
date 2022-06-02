@@ -1,3 +1,6 @@
+/**
+ * @description This is demo data.
+ */
 export const plantsAndCountriesData = `
 INSERT INTO obsidian_demo_schema.plants_countries (plant_id, country_id)
 VALUES

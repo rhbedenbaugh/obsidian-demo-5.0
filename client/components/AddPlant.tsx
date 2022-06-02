@@ -1,7 +1,9 @@
-import { React } from "../../deps.ts";
-import {useObsidian} from '../../deps.ts';
+/**
+ * @description This allows the addition of a Plant...I guess.
+ */
+import { React , useObsidian} from '../../deps.ts';
 
-const AddContainer = (props: any) => {
+const AddPlant = (props: any) => {
   const { query, mutate, cache, setCache, clearCache } = useObsidian();
 
   const style = {
@@ -36,4 +38,4 @@ const AddContainer = (props: any) => {
 );
 };
 
-export default AddContainer;
+export default AddPlant;

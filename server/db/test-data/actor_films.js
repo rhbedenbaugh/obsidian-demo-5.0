@@ -1,3 +1,7 @@
+/**
+ * @description This is demo data.
+ */
+
 export const actorFilmsData = `
 INSERT INTO obsidian_demo_schema.actor_films (actor_id, film_id)
 VALUES

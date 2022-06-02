@@ -1,3 +1,6 @@
+/**
+ * @description This is demo data.
+ */
 export const plantsData = `
 INSERT INTO obsidian_demo_schema.plants (name, maintenance, size, imageUrl)
 VALUES

@@ -1,7 +1,9 @@
-import { React } from "../../deps.ts";
-import Plant from "./Plants/Plant.tsx";
+/**
+ * @description This contains the App body Section...I think.
+ */
+import { React , useObsidian } from "../../deps.ts";
+// import Plant from "./Plants/Plant.tsx";
 import Plants from "./Plants/Plants.tsx";
-import {useObsidian} from '../../deps.ts';
 import AddPlant from './AddPlant.tsx';
 import BrowserCache from '../../obsidian/src/Browser/CacheClassBrowser.js'
 declare global {

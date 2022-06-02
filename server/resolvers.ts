@@ -1,11 +1,16 @@
+/**
+ * @description This...
+ */
+
+//see doc at https://deno.land/x/postgres@v0.15.0/pool.ts
 import { Pool } from 'https://deno.land/x/postgres/mod.ts';
 import 'https://deno.land/x/dotenv/load.ts';
-
+//set port number from .env file for db connection
 let pgPort: number | string | undefined = Deno.env.get('PG_PORT');
 if (typeof pgPort === 'string') {
 	pgPort = parseInt(pgPort as string);
 }
-
+//set pool parameters from .env file
 const config = {
 	user: Deno.env.get('PG_USER'),
 	database: Deno.env.get('PG_DATABASE'),
@@ -13,9 +18,9 @@ const config = {
 	hostname: Deno.env.get('PG_HOSTNAME'),
 	port: pgPort,
 };
-
+//set pool connection numbers
 const POOL_CONNECTIONS = 3; // breaks at 10+ due to ElephantSQL
-
+//create pool & connect to db
 let pool = new Pool(config, POOL_CONNECTIONS);
 
 const resolvers = {

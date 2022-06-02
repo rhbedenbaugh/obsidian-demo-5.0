@@ -1,3 +1,6 @@
+/**
+ * @description This is demo data.
+ */
 export const filmsData = `
 INSERT INTO obsidian_demo_schema.films (title, genre, release_dt)
 VALUES

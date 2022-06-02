@@ -1,3 +1,6 @@
+/**
+ * @description This...
+ */
 import { Pool } from 'https://deno.land/x/postgres/mod.ts';
 // import { PoolClient } from 'https://deno.land/x/postgres/client.ts';
 
@@ -12,7 +15,7 @@ let pgPort: number | string | undefined = Deno.env.get('PG_PORT');
 if (typeof pgPort === 'string') {
   pgPort = parseInt(pgPort as string);
 }
-
+//set pool parameters from .env file
 const config = {
   user: Deno.env.get('PG_USER'),
   database: Deno.env.get('PG_DATABASE'),

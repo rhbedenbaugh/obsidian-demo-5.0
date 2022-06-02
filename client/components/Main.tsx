@@ -1,5 +1,11 @@
+/**
+ * @introduction This is the Main file for the app.\n(MainContainer from MainContainer.tsx is never imported anywhere.)
+ *
+ * @description This contains the Nav, Header, Section, & Footer.
+ */
+
 import { React, ReactDOM, useObsidian, BrowserCache } from '../../deps.ts';
-import Plants from './Plants/Plants.tsx';
+// import Plants from './Plants/Plants.tsx';
 import { Nav } from './Nav.tsx';
 import { Header } from './Header.tsx';
 import { Section } from './Section.tsx';

@@ -1,3 +1,7 @@
+/**
+ * @description This...
+ */
+
 import {Countries} from '../client/components/Countries/Countries.tsx';
 import { Plants } from  '../client/components/Plants/Plants.tsx';
 

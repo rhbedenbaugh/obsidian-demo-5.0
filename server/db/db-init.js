@@ -1,3 +1,7 @@
+/**
+ * @description This...
+ */
+
 /* eslint-disable */
 // TEXT field for imageUrl has pretty much unlimited length; better than varchar in this case
 export const sqlTableCreate = `

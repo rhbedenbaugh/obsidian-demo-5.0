@@ -1,3 +1,6 @@
+/**
+ * @description This contains the App Navigation Bar.
+ */
 import { React } from '../../deps.ts';
 
 declare global {

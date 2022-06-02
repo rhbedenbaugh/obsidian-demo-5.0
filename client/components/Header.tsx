@@ -1,3 +1,6 @@
+/**
+ * @description This contains the App Header.
+ */
 import { React } from '../../deps.ts';
 
 declare global {

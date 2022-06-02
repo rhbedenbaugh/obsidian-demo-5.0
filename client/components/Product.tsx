@@ -1,5 +1,8 @@
+/**
+ * @description This renders the Product(s) available for purchase.
+ */
 import {React} from '../../deps.ts';
-
+//creates & returns 
 const Product = () => {
 	return (
 		<div className="col mb-5">
